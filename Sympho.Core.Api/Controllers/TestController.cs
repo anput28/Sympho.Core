@@ -28,6 +28,5 @@ namespace Sympho.Core.Api.Controllers {
             collection.InsertOne(filter);
             return Ok("Filtro inserito");
         }
-
     }
 }

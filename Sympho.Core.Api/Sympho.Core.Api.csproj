@@ -18,8 +18,4 @@
     <ProjectReference Include="..\Sympho.Core.Application\Sympho.Core.Application.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
 </Project>

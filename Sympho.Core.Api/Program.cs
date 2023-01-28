@@ -1,16 +1,13 @@
+using MongoDB.Bson.Serialization;
+using MongoDB.Bson.Serialization.IdGenerators;
 using Sympho.Core.Api.Mapping;
 using Sympho.Core.Api.Mapping.Conventions;
 
 var builder = WebApplication.CreateBuilder(args);
 {
     builder.Services.AddControllers();
+    MongoDbMapping.AddConfigurations();
 }
-
-// Register all MongoDB conventions for entity mapping
-RegisterConventions.RegisterAll();
-
-// Register all class maps for mapping between MongoDB document and entities
-RegisterEntityMapping.RegisterAll();
 
 var app = builder.Build();
 {
