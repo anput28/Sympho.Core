@@ -1,32 +1,26 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using MongoDB.Driver;
-using Sympho.Core.Domain.Entities;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using Sympho.Core.Domain.CommentAggregate.Entitites;
+using Sympho.Core.Domain.CommentAggregate.Enums;
+using Sympho.Core.Domain.SongAggregate.ValueObjects;
+using Sympho.Core.Domain.UserAggregate;
 
-namespace Sympho.Core.Api.Controllers {
+namespace Sympho.Core.Api.Controllers
+{
     [Route("api/[controller]")]
     [ApiController]
     public class TestController : ControllerBase {
 
-        [HttpPost("insert")]
-        public IActionResult Insert() {
-            var client = new MongoClient("mongodb+srv://sympho:o6YwVYf8lLYbhPME@maincluster.ox2jobq.mongodb.net/?retryWrites=true&w=majority");
-            var database = client.GetDatabase("symphodb");
-            var collection = database.GetCollection<Filter>("filters");
-
-            var filter = new Filter() {
-                Name = "filter1",
-                Genres = new List<string> {
-                    "Synth Pop",
-                    "New Wave"
-                },
-                ImgUrl = "www.site.domain/uasfdsfsds.jpg",
-                CreatedDateTime= DateTime.Now,
-                UpdatedDateTime= DateTime.Now,
-            };
-
-            collection.InsertOne(filter);
-            return Ok("Filtro inserito");
+        [HttpPost("comment/insert")]
+        public IActionResult InsertComment() {
+            /*var comment = Comment.Create(
+                UserId.Create("3bb5bf17-9f5f-49a5-b421-3dca87b2ef0b"),
+                SongId.Create("3bb5bf17-9f5f-49a5-b421-3dca87b2ef0b"),
+                "Ciao, questa canzone è bellissima",
+                CommentType.TEXT,
+                0,
+                null);*/
+            return Ok();
         }
     }
 }
