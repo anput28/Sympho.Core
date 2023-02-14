@@ -1,10 +1,10 @@
-using MongoDB.Bson.Serialization;
-using MongoDB.Bson.Serialization.IdGenerators;
 using Sympho.Core.Api.Mapping;
-using Sympho.Core.Api.Mapping.Conventions;
+using Sympho.Core.Domain.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 {
+    builder.Services.Configure<MongoDBSettings>(
+        builder.Configuration.GetSection("MongoDBSettings"));
     builder.Services.AddControllers();
     MongoDbMapping.AddConfigurations();
 }
